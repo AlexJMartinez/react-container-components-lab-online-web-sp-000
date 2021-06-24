@@ -2,12 +2,17 @@
 import React from 'react';
 
 
-const MovieReviews = (props) => (
-    <div className="review-list">
-        
-    </div>
+const MovieReviews = (props) => {
 
-)
+    return (
+    
+        <div className="review-list">
+            <p className="review">{props.reviewData}</p>
+        </div>
+    
+    )
+
+}
 
 
 

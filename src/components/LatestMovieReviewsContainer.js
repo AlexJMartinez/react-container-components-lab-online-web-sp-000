@@ -19,13 +19,26 @@ export default class LatestMovieReviewsContainer extends React.Component {
         componentDidMount() {
             fetch(URL)
             .then(response => response.json())
-            .then(reviewData => this.setState(console.log(reviewData)))
+            .then(reviewData => {
+                this.setState({
+                    reviews: [...reviewData.results]
+                })
+            })
+                
+        }
+
+        renderReviews() {
+           return  this.state.reviews.map((review) => {
+                      
+                return <MovieReviews key={review.date_updated} reviewData={review.headline} />;
+              })
         }
 
         render() {
             return (
                 <div className="latest-movie-reviews">
-                    <MovieReviews reviews={this.state.reviews} />
+                    {this.state.reviews ? this.renderReviews() : null}
+                    
                 </div>
             )
         }
